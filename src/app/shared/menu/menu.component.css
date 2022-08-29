@@ -1,0 +1,10 @@
+.menu {
+    width: 100%;
+    background: gainsboro;
+    height: 60px;
+    align-content: center;
+}
+
+.menu button {
+    margin-top: 20px;
+}

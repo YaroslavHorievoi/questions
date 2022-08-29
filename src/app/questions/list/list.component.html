@@ -1,0 +1,46 @@
+<div class="wrapper">
+    <div class="list-container-content-left">
+        <h1 class="title">Unanswered</h1>
+        <div class="unanswered">
+            <ng-container *ngFor="let question of unanswered; let i = index">
+                <div *ngIf="question.choice === 0"
+                     class="item">
+                    <single-select-question [question]="question" (answer)="handleAnswer($event)">
+                    </single-select-question>
+                </div>
+
+                <div *ngIf="question.choice === 1"
+                     class="item">
+                    <multiple-select-question [question]="question" (answer)="handleAnswer($event)">
+                    </multiple-select-question>
+                </div>
+
+                <div *ngIf="question.choice === 2"
+                     class="item">
+                    <open-question [question]="question" (answer)="handleAnswer($event)">
+                    </open-question>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="lists-container-content-right">
+        <h1 class="title">
+            Answered
+        </h1>
+        <div class="answered">
+            <ng-container *ngFor="let question of answered; let i = index">
+                <div *ngIf="question.choice === 0" class="item">
+                    <single-select-question [question]="question" (answer)="handleAnswer($event)"></single-select-question>
+                </div>
+
+                <div *ngIf="question.choice === 1" class="item">
+                    <multiple-select-question [question]="question" (answer)="handleAnswer($event)"></multiple-select-question>
+                </div>
+
+                <div *ngIf="question.choice === 2" class="item">
+                    <open-question [question]="question" (answer)="handleAnswer($event)"></open-question>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

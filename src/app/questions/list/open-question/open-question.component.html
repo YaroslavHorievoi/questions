@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-title>{{ question.question | uppercase }}</mat-card-title>
+    <p>Open Question</p>
+    <mat-card-content>
+      <ng-container *ngIf="question.isAnswered">
+        {{ question.answer?.[0] }}
+      </ng-container>
+      <ng-container *ngIf="!question.isAnswered">
+        <form [formGroup]="form">
+          <mat-form-field appearance="outline">
+            <mat-label>Option</mat-label>
+            <input matInput type="text" formControlName="answer">
+          </mat-form-field>
+        </form>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="!question.isAnswered" mat-raised-button color="primary" [disabled]="form.controls['answer'].invalid" (click)="submit()">Answer</button>
+      <button *ngIf="question.isAnswered" mat-raised-button color="warn" (click)="submit(false)">Roll Back</button>
+    </mat-card-actions>
+</mat-card>

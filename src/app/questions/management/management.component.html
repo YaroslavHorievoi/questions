@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <ng-container *ngFor="let question of questions; let ind = index">
+        <mat-card>
+            <mat-card-title>{{ question.question | uppercase }}</mat-card-title>
+            <mat-card-subtitle>{{ question.createdAt | date : 'dd-MM-yy hh:mm' }}</mat-card-subtitle>
+            <mat-card-content>
+                {{ getQuestionType(question.choice) }}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" [routerLink]="'../edit/' + ind">Edit</button>
+                <button mat-raised-button color="primary" (click)="deleteQuestion(ind)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>
+</div>

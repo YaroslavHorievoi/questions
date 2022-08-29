@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title>{{ question.question | uppercase }}</mat-card-title>
+    <p>Single Select</p>
+    <mat-card-content>
+      <mat-radio-group aria-labelledby="example-radio-group-label"
+                       class="example-radio-group"
+                       [(ngModel)]="givenAnswer"
+                       [disabled]="question.isAnswered">
+        <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer" [checked]="question.answer?.[0] === answer">
+          {{answer}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="!question.isAnswered" mat-raised-button color="primary" [disabled]="!givenAnswer" (click)="submit()">Answer</button>
+      <button *ngIf="question.isAnswered" mat-raised-button color="warn" (click)="submit(false)">Roll Back</button>
+    </mat-card-actions>
+</mat-card>
